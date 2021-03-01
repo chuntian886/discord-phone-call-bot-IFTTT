@@ -16,8 +16,7 @@ async def on_message(message):
     print(message)
 
     report = {}
-    report["value1"] = f"New message"
-    report["value2"] = f"please check discord"
+    report["value1"] = message.content
     async with aiohttp.ClientSession() as session:
         await session.post("https://maker.ifttt.com/trigger/" + config["eventName"] +"/with/key/" + config["IFTTTkey"], data=report)
 
